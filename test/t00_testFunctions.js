@@ -60,13 +60,16 @@ function test(f,a,e){
 		done();
     });
 }
-function testNot(f,a,e){
+function testShuffle(f,a){
 	it('set '+a.join(), function(done) {
-		const eo=[...e];
-		const r=f(a.slice(0));
-		console.log("a=",a)
-		console.log("r=",r)
-		assert.notDeepEqual(r,eo) // check same list
+		const sorted=a.slice(0).sort();
+		let changed=false;
+		for(let i=0;i<50;i++) {
+			const r=f(a.slice(0));
+			assert.deepEqual(r.slice(0).sort(),sorted) // same members
+			if(r.join()!=a.join()) changed=true;
+		}
+		assert.ok(changed,"never shuffled")
 		done();
     });
 }
@@ -158,9 +161,9 @@ describe('combinations', function(){
 describe('permutationRandom', function(){
 	test(permutationRandom,array0,array0);
 	test(permutationRandom,array1,array1);
-//	testNot(permutationRandom,array2,array2);  as likely equal
-	testNot(permutationRandom,array3,array3);
-	testNot(permutationRandom,array4,array4);
+	testShuffle(permutationRandom,array2);
+	testShuffle(permutationRandom,array3);
+	testShuffle(permutationRandom,array4);
 });
 describe('permutationRandom all', function(){
 	it('all', function(done) {

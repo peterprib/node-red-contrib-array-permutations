@@ -12,7 +12,7 @@ function permutationHeapCloned(dataArray,call,aggregate,size=dataArray.length) {
         return;
 	}
 	const lastOffset=size-1;
-    if (oddSize=size%2==1){
+    if (size%2==1){
         for(let i=0; i<size; i++) {
     		permutationHeapCloned(dataArray,call,aggregate,lastOffset);
 	    	if (i<lastOffset){
@@ -38,7 +38,7 @@ function permutationHeapNotCloned(dataArray,call,aggregate,size=dataArray.length
         return;
 	}
 	const lastOffset=size-1;
-    if (oddSize=size%2==1){
+    if (size%2==1){
         for(let i=0; i<size; i++) {
     		permutationHeapNotCloned(dataArray,call,aggregate,lastOffset);
 	    	if (i<lastOffset){
