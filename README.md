@@ -25,6 +25,8 @@ Folder test contains a flow that tests the various combinations.
 
 # Version
 
+0.0.6 fix Messages, Combination Loop, Loop with falsy values, Permutations Unique, Permutations Callable and editor methods that were missing at runtime. Property paths no longer evaluated as code. Removed unused "Array Combinations" type.
+
 0.0.5 fix bug with perms, added circular, heap, unique, random
 
 0.0.4 fix bug with loop and ensure all separated messages have unique id.

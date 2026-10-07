@@ -1,17 +1,18 @@
 <script type="text/javascript">
+(function() {
     const actions={
         Combinations:{outputs:2,hide:["unique"]},
         CombinationLoop:{outputs:3,label:"Combination Loop",hide:["unique"]},
         CombinationMessages:{outputs:2,label:"Combination Messages",hide:["unique"]},
         Loop:{outputs:3},
         Messages:{outputs:2},
-        Permutations:{outputs:2},
-        PermutationsMessages:{outputs:2,label:"Permutation Messages"},
+        Permutations:{outputs:2,hide:["unique"]},
+        PermutationsMessages:{outputs:2,label:"Permutation Messages",hide:["unique"]},
         PermutationsCircular:{outputs:2,label:"Permutation Circular",hide:["setSize","unique"]},
         PermutationsCircularMessages:{outputs:2,label:"Permutation Circular Messages",hide:["setSize","unique"]},
         PermutationsHeap:{outputs:2,label:"Permutation Heap",hide:["setSize","unique"]},
         PermutationLoop:{outputs:3,label:"Permutation Loop"},
-        PermutationRandom:{outputs:2,label:"Permutation Random",hide:["arrayProperty","setSize","unique"]},
+        PermutationRandom:{outputs:2,label:"Permutation Random",hide:["setSize","unique"]},
         PermutationsUnique:{outputs:2,label:"Permutations Unique",hide:["unique"]},
         PermutationsUniqueMessages:{outputs:2,label:"Permutations Unique Messages",hide:["unique"]}
     };
@@ -37,14 +38,13 @@
         icon: "five-red-dice.png",
         label: function() {
             if(this.name) return this.name;
-            if(this.action) return actions[this.action].label||this.action;
+            if(this.action) return (actions[this.action]||{}).label||this.action;
             return this._("Array Permutations");
         },
         labelStyle: function() {
             return "node_label_italic";
         },
         oneditprepare: function() {
-            console.log("setup")
         	const node=this;
             const options=Object.keys(actions).reduce((previousValue,property)=>previousValue.concat({value:property,label:(actions[property].label||property)}),
 				[]);
@@ -76,6 +76,7 @@
         resizeRule : function(file,newWidth) {
         }
     });
+})();
 </script>
 
 <script type="text/x-red" data-template-name="Array Permutations">

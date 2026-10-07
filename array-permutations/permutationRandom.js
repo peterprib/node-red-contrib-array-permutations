@@ -1,10 +1,10 @@
 const logger = new (require("node-red-contrib-logger"))("permutationRandom");
 logger.sendInfo("Copyright 2022 Jaroslav Peter Prib");
-Array.prototype.swap=function(a,b){
-    const temp=this[a];
-    this[a]=this[b];
-    this[b]=temp;
-  };
+function swap(dataArray,a,b){
+    const temp=dataArray[a];
+    dataArray[a]=dataArray[b];
+    dataArray[b]=temp;
+}
 function permutationRandom(dataArray,size=dataArray.length,necklace=true){
     return necklace==true?permutationRandomNecklace(dataArray,size):permutationRandomAll(dataArray,size)
 }
@@ -13,7 +13,7 @@ function permutationRandomNecklace(dataArray){
     const l=n-1;
     for(let i=0; i<l; i++) {
         const j=i+Math.floor(Math.random()*(n-i));
-        dataArray.swap(i,j);
+        swap(dataArray,i,j);
     }
     return dataArray;
 }
