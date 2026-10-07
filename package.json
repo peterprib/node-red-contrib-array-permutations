@@ -11,6 +11,9 @@
     "node-red-node-test-helper": "^0.3.6",
     "should": "^13.2.3"
   },
+  "engines": {
+    "node": ">=22.0.0"
+  },
   "scripts": {
     "test": "mocha \"test/**/t*.js\"",
     "startNodeRed": "node-red --userDir ./.temp --title '***test***' --setting ./test/data/settings.js ./test/data/flow.json"
@@ -42,9 +45,6 @@
     "url": "https://github.com/peterprib/node-red-contrib-array-permutations/issues"
   },
   "homepage": "https://github.com/peterprib/node-red-contrib-array-permutations#readme",
-  "engines": {
-    "node": ">=14"
-  },
   "overrides": {
     "axios": "^1.20.0",
     "moment": "^2.31.0",
